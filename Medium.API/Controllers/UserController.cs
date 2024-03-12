@@ -30,6 +30,12 @@ namespace Medium.API.Controllers
             var s = await _mediator.Send(new GetAllUsersCommandQuery());
             return s;
         }
+        [HttpGet]
+        public async Task<User> GetUserById(int id)
+        {
+            var s = await _mediator.Send(new GetUserByIdCommandQuery() { Id = id});
+            return s;
+        }
         [HttpDelete]
         public async Task<string> DeleteUser(DeleteUserCommand dl)
         {

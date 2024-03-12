@@ -23,23 +23,60 @@ namespace Medium.Application.UseCases.MediumUser.Handlers
 
         public async Task<string> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var res = await _context.Users.FirstOrDefaultAsync(x=>x.Id == request.IdFinder && x.IsDeleted == false);
-            if(res == null)
+            var res = await _context.Users.FirstOrDefaultAsync(x => x.Id == request.IdFinder && x.IsDeleted == false);
+            if (res == null)
             {
                 return "Not Found";
             }
-            if(!_passwordHasher.Verify(res.PasswordHash,request.LastPassword,res.Salt))
+            if (!_passwordHasher.Verify(res.PasswordHash, request.LastPassword, res.Salt))
             {
                 return "Password incorrect";
-            }    
-            res.UserName = request.UserName;
-            res.Name = request.Name;
-            res.Email = request.Email;
-            res.PicturePath = request.PicturePath;
-            res.PasswordHash = _passwordHasher.Encrypt(request.Password,res.Salt);
-            res.Biography = request.Biography;
-            res.Login = request.Login;
-            res.Followers = request.Followers;
+            }
+            if (!string.IsNullOrEmpty(request.UserName))
+            {
+                res.UserName = request.UserName;
+            }
+
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                res.Name = request.Name;
+            }
+
+            if (!string.IsNullOrEmpty(request.Email))
+            {
+                res.Email = request.Email;
+            }
+
+            if (!string.IsNullOrEmpty(request.PicturePath))
+            {
+                res.PicturePath = request.PicturePath;
+            }
+
+            if (!string.IsNullOrEmpty(request.Password))
+            {
+                res.PasswordHash = _passwordHasher.Encrypt(request.Password, res.Salt);
+            }
+
+            if (!string.IsNullOrEmpty(request.Biography))
+            {
+                res.Biography = request.Biography;
+            }
+
+            if (!string.IsNullOrEmpty(request.Login))
+            {
+                res.Login = request.Login;
+            }
+
+            if (request.Followers != null)
+            {
+                res.Followers = request.Followers;
+            }
+
+            res.ModifiedDate = DateTimeOffset.UtcNow;
+
+            _context.Users.Update(res);
+            await _context.SaveChangesAsync(cancellationToken);
+
             res.ModifiedDate = DateTimeOffset.UtcNow;
             _context.Users.Update(res);
             await _context.SaveChangesAsync(cancellationToken);
