@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Medium.Application.Abstractions;
 using Medium.Application.Mappers;
+using Medium.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,6 +18,7 @@ namespace Medium.Application
         {
             services.AddAutoMapper(typeof(AutoMapperProfile));
             services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
             return services;
         }
     }
