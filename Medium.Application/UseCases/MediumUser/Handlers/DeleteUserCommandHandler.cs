@@ -33,6 +33,7 @@ namespace Medium.Application.UseCases.MediumUser.Handlers
                 return "Password inncorrect";
             }
             res.IsDeleted = true;
+            res.DeletedDate = DateTimeOffset.UtcNow;
             _context.Users.Update(res);
             await _context.SaveChangesAsync(cancellationToken);
             return "Deleted";
