@@ -37,5 +37,10 @@ namespace Medium.API.Controllers
             return s;
         }
         [HttpPut]
+        public async Task<string> Update(UpdateUserCommand uuc)
+        {
+            var s = await _mediator.Send(uuc);
+            return s;
+        }
     }
 }
