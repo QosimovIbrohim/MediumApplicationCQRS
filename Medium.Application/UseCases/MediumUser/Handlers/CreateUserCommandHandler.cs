@@ -3,6 +3,7 @@ using MediatR;
 using Mediaum.Domain.Entities;
 using Mediaum.Domain.Exceptions;
 using Medium.Application.Abstractions;
+using Medium.Application.Mappers;
 using Medium.Application.UseCases.MediumUser.Commands;
 
 namespace Medium.Application.UseCases.MediumUser.Handlers
@@ -23,7 +24,7 @@ namespace Medium.Application.UseCases.MediumUser.Handlers
         {
             try
             {
-                var user = _mapper.Map<User>(request);
+                var user = request.MyMapp<User>();
                 user.Salt = Guid.NewGuid().ToString("N");
                 user.PasswordHash = _pHash.Encrypt(request.Password, user.Salt);
                 await _context.Users.AddAsync(user);

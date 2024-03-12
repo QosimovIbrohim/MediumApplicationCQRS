@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medium.API", "Medium.API\Medium.API.csproj", "{90894E9D-7877-4069-BEA0-22CC2275A3B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medium.API", "Medium.API\Medium.API.csproj", "{90894E9D-7877-4069-BEA0-22CC2275A3B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B59158F9-5EB0-4BEE-988E-AD002380EB00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediaum.Domain", "Mediaum.Domain\Mediaum.Domain.csproj", "{FAA2F269-A5B1-4860-853D-3A279B60322D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mediaum.Domain", "Mediaum.Domain\Mediaum.Domain.csproj", "{FAA2F269-A5B1-4860-853D-3A279B60322D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medium.Application", "Medium.Application\Medium.Application.csproj", "{7405A7DD-799E-4C4C-BB78-91F176C833A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medium.Application", "Medium.Application\Medium.Application.csproj", "{7405A7DD-799E-4C4C-BB78-91F176C833A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medium.Infrastructure", "Medium.Infrastructure\Medium.Infrastructure.csproj", "{CDC8D478-0007-465A-8E76-0B3357861F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medium.Infrastructure", "Medium.Infrastructure\Medium.Infrastructure.csproj", "{CDC8D478-0007-465A-8E76-0B3357861F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
